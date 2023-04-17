@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Quiz1.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="card" style="width:80%">
+        
+        <div class="card-body">
+          <h1 class="card-title, bg-black text-white" style=" border-bottom: 10px solid green; font: size 35px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">Quiz</h1>
+
+          <p class="prompt" style="border-bottom: 10px solid gold; font-size:20px">Try to answer the following questions correctly within the minute provide. Be aware that every incorrect answer incurs a 10sec penalty. <span style="font-weight:bold">Bon Chance!!</span></p>
+        </div>
+        <div id="quiz">
+            <div id="q-box" style="display:block ; font-size:30ox;height:200px"  ><p id="question" style="padding-left: 20px; font-size: 25px;">Question</p><h1 style="text-align: right; padding-right: 20px;" id="timer">Timer</h1></div>
+            
+            <div id=" answer-buttons" class="b-box" style="margin-bottom:20px; padding-left: 30px; gap:20px; display:grid">
+
+            <button class="button answer" id="a" onclick="checkAnswer('a')">A</button>
+            <button class="button answer" id="b" onclick="checkAnswer('b')">B</button>
+            <button class="button answer" id="c" onclick="checkAnswer('c')">C</button>
+            <button class="button answer" id="d" onclick="checkAnswer(d)">D</button>
+            </div>
+            </div>
+
+        <div class="card-body controls" style="display: flex">
+          <button class="start.btn" id="start">Start</button>
+          <button class="next-btn" id="next">Next</button>
+        </div>
+      </div>
+
+
+
+
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <script type="text/javascript" src="./Quiz1.js"></script>
+</body>
+</html>

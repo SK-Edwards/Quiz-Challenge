@@ -1,0 +1,241 @@
+const quizData = [
+    {
+        question: "What is the true name of JavaScript?",
+a: "Java",
+b: "EMA Script",
+c: "ECMA Script",
+d: "EDM Script",
+correct: "c",
+    },
+    {
+        question: "What is CSS short for?",
+        a: "Cicada Style Services",
+        b: "Cascading Style Sheet",
+        c: "Conditional Style Services",
+        d: "Cursive Script Sheet",
+        correct: "b",
+        
+    },
+    {
+    question: "Whats is the meaning of DOM?";
+      
+a: " Direct Object Model ",
+b: " Document Object Model ",
+c: " Document Only Mold" ,
+d: " Document Organizational Model ",
+correct: "b",
+    },
+    {
+        question: "If var x = 7, what'll be the result of x++?";
+        
+a: "9",
+b: "12",
+c: "6",
+d: "8",
+correct: "d",
+     },
+     {
+         question: "What the tools that browsers have available?",
+         a: "DOM",
+         b: "API",
+         c: "CSS",
+         d: "Methods",
+         correct: "b",
+     },
+     {
+         question: "Which language runs in the web browser?",
+         a: "CSS",
+        b: "Python",
+        c: "React",
+        d: "JavaScript",
+         correct: "d",
+   }
+];
+
+
+Timer Code Sample (codepen.io)
+
+
+HTML
+
+<p>Session will end in <span class="js-timeout">1:00</span>.</p>
+
+<button id="js-startTimer">Start Countdown</button>
+<button id="js-resetTimer">Stop &amp; Reset</button>
+
+
+
+
+
+JavaScript
+
+var interval;
+
+function countdown() {
+  clearInterval(interval);
+  interval = setInterval( function() {
+      var timer = $('.timeout').html();
+      timer = timer.split(':');
+      var minutes = timer[0];
+      var seconds = timer[1];
+      seconds -= 1;
+      if (minutes < 0) return;
+      else if (seconds < 0 && minutes != 0) {
+          minutes -= 1;
+          seconds = 59;
+      }
+      else if (seconds < 10 && length.seconds != 2) seconds = '0' + seconds;
+
+      $('.timeout').html(minutes + ':' + seconds);
+
+      if (minutes == 0 && seconds == 0) clearInterval(interval);
+  }, 1000);
+}
+
+$('#start-timer').click(function () {
+  $('.timeout').text("2:00");
+  countdown();
+});
+
+$('#reset-timer').click(function () {
+  $('.timeout').text("2:00");
+  clearInterval(interval);
+});
+
+
+
+
+
+
+2nd timer
+
+
+$('#start').click(function(){
+    MyTimer();
+})
+
+function MyTimer(callback, val){
+    val = val || 60; 
+    var timer=setInterval(function() { 
+        callback(val);
+        if(val-- <= 0) { 
+            clearInterval(timer); 
+        } 
+    }, 1000);
+};
+new MyTimer(function(val) {
+    var timerMsg = "00:" + (val >= 10 ? val : "0" + val);
+    document.getElementById("timer").textContent = timerMsg; 
+});
+$('#start').click(function(){
+    MyTimer();
+})
+
+
+
+
+
+var currentQuestion = 0;
+var score = 0;
+var correctAnswer = questions[currentQuestionIndex].correct;
+var clickViewScores = document.getElementById("view-score");
+
+var answer = function(event) {
+    event.preventDefault();
+    var userAnswer = event.target.textContent;
+    correctAnswer = quizData[currentQuestion].correct;
+    // determine if answer is wrong or right
+    var answerDetermination = document.querySelector("#answer-determination");
+    if (userAnswer !== correctAnswer) {
+        adjustTime(-10);
+        answerDetermination.textContent = "Wrong!";
+        currentQuestionIndex++;
+        if (currentQuestionIndex >= questions.length) {
+            endQuizPage();
+        } else {renderQuestion(questions[currentQuestionIndex])};
+
+    }
+    else if (userAnswer === correctAnswer) {
+        currentQuestionIndex++;
+        answerDetermination.textContent = "Correct!";
+        userScore++;
+        if (currentQuestionIndex >= questions.length) {
+            endQuizPage();
+        } else {renderQuestion(questions[currentQuestionIndex])};
+    }
+};
+
+var quiz = function (event) {
+    event.preventDefault();
+    resetDisplay();
+    renderQuestion(questions[currentQuestionIndex]);
+};
+
+function resetDisplay() {
+    questionContainer.innerHTML="";
+    document.querySelector("#intro-page").style.display = "none";
+}
+function highScores() {
+    let data = localStorage.getItem("object");
+    let getData = JSON.parse(data);
+    let name = getData.name;
+    let score = getData.score;
+    questionContainer.innerHTML = "";
+    questionContainer.innerHTML = name + " " + score;
+}
+clickViewScores.addEventListener("click", () => {
+    highScores();
+})
+
+var initials; 
+function endQuizPage() {
+    resetDisplay();
+    timerEl.textContent = "";
+    clearInterval(quizDuration);
+    var endPage = document.createElement("h2");
+    questionContainer.appendChild(endPage);
+
+    let blank = document.querySelector("#answer-determination");
+    blank.innerHTML = "";
+
+    endPage.innerHTML = "All done! Your final score is " + userScore + ". Enter your initials to save";
+
+    var initialBox = document.createElement("input");
+    blank.appendChild(initialBox);
+
+    var submitInitialBtn = document.createElement("button");
+    submitInitialBtn.textContent = "Submit";
+    blank.appendChild(submitInitialBtn);
+
+    submitInitialBtn.addEventListener("click", () => {
+        // rest variable
+        
+        if (initialBox.value.length === 0) return false;
+
+        let storeInitials = (...input) => {
+            let data = JSON.stringify({ "name":input[0], "score":input[1]})
+            localStorage.setItem("object", data)
+        }
+        storeInitials(initialBox.value, userScore);
+
+        var playAgain = document.createElement("button");
+        playAgain.textContent= "Play Again!";
+        blank.appendChild(playAgain);
+
+        playAgain.addEventListener("click", () => {
+            location.reload();
+        })
+    });
+
+    document.querySelector("input").value = "";
+
+    initialBox.addEventListener("submit", endQuizPage);
+    
+};
+function renderInitials() {
+    submitInitialBtn.addEventListener('click', function(event) {
+        event.preventDefault;
+}
+)};
+
+clickStart.addEventListener('click', quiz);
