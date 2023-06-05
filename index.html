@@ -24,12 +24,12 @@
             <button class="button answer" id="a" onclick="checkAnswer('a')">A</button>
             <button class="button answer" id="b" onclick="checkAnswer('b')">B</button>
             <button class="button answer" id="c" onclick="checkAnswer('c')">C</button>
-            <button class="button answer" id="d" onclick="checkAnswer(d)">D</button>
+            <button class="button answer" id="d" onclick="checkAnswer('d')">D</button>
             </div>
             </div>
 
         <div class="card-body controls" style="display: flex">
-          <button class="start.btn" id="start">Start</button>
+          <button class="start.btn" id="start" onclick="startCountdown(60), startQuiz()">Start</button>
           <button class="next-btn" id="next">Next</button>
         </div>
       </div>

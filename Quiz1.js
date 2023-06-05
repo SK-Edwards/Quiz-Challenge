@@ -89,7 +89,6 @@ function startCountdown(seconds){
     
 }
 
-startCountdown(60);
 
 //got the first question to show up. havent fully figured this one out yet.
 
@@ -97,15 +96,10 @@ startCountdown(60);
  
     var x = -1; x <= quizData.length; x++;
 
-
     question.textContent = quizData[x].question;
-
     answerA.textContent = quizData[x].a;
-  
     answerB.textContent = quizData[x].b;
-    
     answerC.textContent = quizData[x].c;
-    
     answerD.textContent = quizData[x].d;
   
    
@@ -116,6 +110,8 @@ startCountdown(60);
 
 };
 
-   startQuiz()
+// {answerA, answerB, answerC, answerD}.addEventListener('click', function(event) {
+//     currentChoice = event.target.textContent;
+// })
 
 
