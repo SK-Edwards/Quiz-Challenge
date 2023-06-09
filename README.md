@@ -1,8 +1,11 @@
 ## Quiz-App--1
 First Quiz App
 
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+
 ## About
-This one is for sure a work in progress
+
 
 ## Installation
 
@@ -21,10 +24,10 @@ This one is for sure a work in progress
 https://getbootstrap.com/
 
 
-## License
-
-(refer to repo)
-
+## License 
+  The MIT License
+   
+  (https://opensource.org/licenses/MIT)
 
 
 
