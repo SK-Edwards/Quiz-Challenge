@@ -5,6 +5,7 @@ First Quiz App
 
 
 ## About
+![*](https://github.com/SK-Edwards/Quiz-Challenge/blob/main/images/Screenshot%202023-06-09%20122801.png?raw=)
 
 
 ## Installation
